@@ -5,18 +5,18 @@ using UnityEngine;
 public class Hitbox : MonoBehaviour
 {
 
-    public int startFrame;
-    public int endFrame;
+    public int startFrame; //starting frame of hitbox
+    public int endFrame; //end frame of hitbox
 
     public int damage;
     // Use this for initialization
 
-    void OnCollisionEnter(Collision other)
+    void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.name == "Enemy")
+        if (other.gameObject.CompareTag("Enemy")) //if hitbox makes contact with an enemy
         {
             Debug.Log("Hitbox collided");
-            Destroy(other.gameObject);
+            Destroy(other.gameObject); //destroy enemy. Will implement damage in future.
         }
     }
     void Start()

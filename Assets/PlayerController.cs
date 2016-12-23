@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
         if (Input.GetButtonDown("Fire1") && attackFinish == false) {
             animator.SetTrigger("Player_Attack");
+            //spawn hitboxes
             if (facingLeft == true) {
                 currentHitbox = Instantiate(hitbox1, -transform.position, Quaternion.identity, this.transform);
             }
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour {
             attackFinish = false;
         }
 
+        //sprite flipping
         if (Input.GetKeyDown("left") && facingLeft == false) {
             sp.flipX = true;
             facingRight = false;
@@ -83,21 +85,10 @@ public class PlayerController : MonoBehaviour {
         
             other.gameObject.SetActive(false);
             count++;
-            SetCountText();
+            //SetCountText();
 
         }
 
-    }
-
-    void SetCountText()
-    {
-        //Set the text property of our our countText object to "Count: " followed by the number stored in our count variable.
-       // countText.text = "Count: " + count.ToString();
-
-        //Check if we've collected all 12 pickups. If we have...
-        //if (count >= 12)
-            //... then set the text property of our winText object to "You win!"
-         //   winText.text = "You win!";
     }
 
     void StopMovement() { //character will not do the slidy
